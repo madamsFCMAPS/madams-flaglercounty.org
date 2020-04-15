@@ -1,0 +1,96 @@
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
+  <!--
+  ArcGIS API for JavaScript, https://js.arcgis.com
+  For more information about the widgets-featuretable sample, read the original sample description at developers.arcgis.com.
+  https://developers.arcgis.com/javascript/latest/sample-code/widgets-featuretable/index.html
+  -->
+  <title>FeatureTable widget - 4.15</title>
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.15/esri/themes/light/main.css" />
+  <script src="https://js.arcgis.com/4.15/"></script>
+
+  <style>
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+  <script>
+    require([
+      "esri/layers/FeatureLayer",
+      "esri/widgets/FeatureTable"
+    ], function(FeatureLayer, FeatureTable) {
+      var featureLayer = new FeatureLayer({
+        url: "https://services3.arcgis.com/hSKL9bYjhP4rHxSD/arcgis/rest/services/Flagler_Businesses_(View)/FeatureServer",
+        title: "Flagler County Open for Business"
+      });
+      // create the FeatureTable from the provided FeatureLayer
+      const table = new FeatureTable({
+        layer: featureLayer,
+        fieldConfigs: [{
+            name: "name_of_business",
+            label: "Name of Business",
+            direction: "asc"
+          },
+          {
+            name: "business_type",
+            label: "Business Type"
+          },
+          {
+            name: "business_address",
+            label: "Address"
+          },
+          {
+            name: "business_postal_city",
+            label: "Postal City"
+          },
+          {
+            name: "business_phone_number",
+            label: "Phone Number"
+          },
+          {
+            name: "what_is_your_website_url",
+            label: "Website"
+          },
+          {
+            name: "what_time_do_you_open",
+            label: "Open"
+          },
+          {
+            name: "what_time_do_you_close",
+            label: "Close"
+          },
+          {
+            name: "if_yes_what_are_those_hours",
+            label: "Special Hours for Seniors or Highly Succeptible Customers"
+          },
+          {
+            name: "field_19",
+            label: "What would you like to share with the public about your business?"
+          },
+        ],
+        container: document.getElementById("tableDiv")
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <div id="tableDiv"></div>
+  </div>
+</body>
+
+</html>
