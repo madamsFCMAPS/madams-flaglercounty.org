@@ -30,55 +30,24 @@
   <script>
     require([
       "esri/layers/FeatureLayer",
-      "esri/widgets/FeatureTable"
+      "esri/widgets/FeatureTable",
+      "esri/widgets/Search"
     ], function(FeatureLayer, FeatureTable) {
       var featureLayer = new FeatureLayer({
-        url: "https://services3.arcgis.com/hSKL9bYjhP4rHxSD/arcgis/rest/services/Flagler_Businesses_(View)/FeatureServer",
-        title: "Flagler County Open for Business"
+        url: "https://services3.arcgis.com/hSKL9bYjhP4rHxSD/arcgis/rest/services/Flagler_CARES_Individual_Assistance_Application_(for_lookup)/FeatureServer",
+        title: "Flagler County CARES Individual Assistance Application Look-Up"
       });
       // create the FeatureTable from the provided FeatureLayer
       const table = new FeatureTable({
         layer: featureLayer,
         fieldConfigs: [{
-            name: "name_of_business",
-            label: "Name of Business",
-            direction: "asc"
+            name: "objectid",
+            label: "Application Number",
+            direction: "asc",
           },
           {
-            name: "business_type",
-            label: "Business Type"
-          },
-          {
-            name: "business_address",
-            label: "Address"
-          },
-          {
-            name: "business_postal_city",
-            label: "Postal City"
-          },
-          {
-            name: "business_phone_number",
-            label: "Phone Number"
-          },
-          {
-            name: "what_is_your_website_url",
-            label: "Website"
-          },
-          {
-            name: "what_time_do_you_open",
-            label: "Open"
-          },
-          {
-            name: "what_time_do_you_close",
-            label: "Close"
-          },
-          {
-            name: "if_yes_what_are_those_hours",
-            label: "Special Hours for Seniors or Highly Succeptible Customers"
-          },
-          {
-            name: "field_19",
-            label: "What would you like to share with the public about your business?"
+            name: "approval_team_status",
+            label: "Status",
           },
         ],
         container: document.getElementById("tableDiv")
